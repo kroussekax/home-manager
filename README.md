@@ -100,6 +100,10 @@
 
 - [`Blender`](https://blender.org) → 3D creation suite
 
-## 🪐 Featuresr 🦄
+## 🪐 Features 🦄
 
 Every apps are configured in their own file. For example, the hyprland config is stored neatly in modules/hyprland.nix and same goes for other apps. This allows for a more clean code enviorement and easier code to debug in general
+
+## ⌨️ Keyboard Shortcuts 💨
+
+The majority of shortcuts can be found in modules/hyprland.nix. I purposely made them vim based because thats just what I'm used to. Altough. there are in fact issues with conflicting keybinds between hyprland and ambxst. 

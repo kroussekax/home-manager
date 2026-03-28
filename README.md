@@ -51,3 +51,7 @@ Every apps are configured in their own file. For example, the hyprland config is
 ## ⌨️ Keyboard Shortcuts 💨
 
 The majority of shortcuts can be found in modules/hyprland.nix. I purposely made them vim based because thats just what I'm used to. Altough. there are in fact issues with conflicting keybinds between hyprland and ambxst. 
+
+## ⏰ The Process ‼️
+
+I started using Nix right around the end of 2025 and immidietly tried out HomeManager. I fell in love with the concept and continuesly use it until now. There has been issues like the learning curve but I think it's all very worthi t. I can't imagine a life without Nix and/or HomeManager. The biggest and most noticable part of this HM config is ofcourse its hyprland config. I'm using a slightly modifed version of Axenide/ambxst for the hyprland shell and its just amaaxing. Althought, there was some isseus with conflicting apps and ongoing issues with conflicting keybinds

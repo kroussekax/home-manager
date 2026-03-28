@@ -102,4 +102,4 @@
 
 ## 🪐 Featuresr 🦄
 
-Every apps are configured in their own file. For example, the hyprland config is stored neatly in modules/hyprland.nix and same goes for other apps. This allows for a more clean code enviorement and easier code to debug in general.
+Every apps are configured in their own file. For example, the hyprland config is stored neatly in modules/hyprland.nix and same goes for other apps. This allows for a more clean code enviorement and easier code to debug in general

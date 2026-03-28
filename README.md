@@ -2,7 +2,7 @@
 
 > This is my personal NixOS HM configuration with minimal packages, optimal configurations, and clean code (or at least i try)
 
-## 💻 Technologies
+## 💻 Technologies ✨
 
 - [`HomeManager`](https://nix-community.github.io/home-manager/) -> Main tool used
 

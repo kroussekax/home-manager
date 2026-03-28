@@ -99,3 +99,7 @@
 - [`File `Roller](https://gitlab.gnome.org/GNOME/file-roller) → Archive manager
 
 - [`Blender`](https://blender.org) → 3D creation suite
+
+## 🪐 Featuresr 🦄
+
+Every apps are configured in their own file. For example, the hyprland config is stored neatly in modules/hyprland.nix and same goes for other apps. This allows for a more clean code enviorement and easier code to debug in general.

@@ -35,44 +35,36 @@
 		ripgrep
 		unzip
 		wget
-		lua54Packages.luarocks
+		yad
+		fzf
+
+		fastfetch
+		notify-desktop
+		xsettingsd
+
 		nodejs
-		fd
-		rustup
+
+		gcc
 		cmake
 		ninja
-		dfu-util
+
+		lua
+		lua54Packages.luarocks
+
+		go
+		rustup
 		python3
-		ccache
-		chromium
-		yad
-
 		zig
-		fzf
-		fastfetch
+		gawk
+
 		nerd-fonts.jetbrains-mono
-
-		notify-desktop
-
-		steam
-
 		gnome-themes-extra
 		papirus-icon-theme
 		bibata-cursors
 
-		xsettingsd
-
+		steam
 		libreoffice
 
-		lsb-release
-		mesa-demos
-		cabextract
-		samba
-		bc
-		gawk
-		mokutil
-		gettext
-		vscode
 		gh
 		vial
 		platformio

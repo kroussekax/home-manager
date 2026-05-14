@@ -1,0 +1,119 @@
+{
+	"hyprland/workspaces#kanji": {
+		"disable-scroll": true,
+			"show-special": false,
+			"all-outputs": true,
+			"format": "{icon}",
+			"active-only": false,
+			"persistent-workspaces": {
+				"*": 5
+			},
+			"format-icons": {
+				"1": "一",
+				"2": "二",
+				"3": "三",
+				"4": "四",
+				"5": "五",
+				"6": "六",
+				"7": "七",
+				"8": "八",
+				"9": "九",
+				"10": "十",
+			}
+	},
+	"hyprland/window": {
+		"format": "{}",
+		"max-length": 20,
+		"separate-outputs": true,
+		"offscreen-css": true,
+		"offscreen-css-text": "(inactive)",
+		"rewrite": {
+			"(.*) — Mozilla Firefox": " $1",
+			"(.*) - fish": "> [$1]",
+			"(.*) - zsh": "> [$1]",
+			"(.*) - $term": "> [$1]",
+		},
+	},
+	"clock": {
+		"interval": 1,
+		//"format": " {:%I:%M %p}", // AM PM format
+		"format": " {:%H:%M:%S}", // 24H
+		"format-alt": " {:%H:%M   %Y, %d %B, %A}",
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		}
+	},
+	"bluetooth": {
+		"format": " ",
+		"format-disabled": "󰂳",
+		"format-connected": "󰂱 {num_connections}",
+		"tooltip-format": " {device_alias}",
+		"tooltip-format-connected": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+		"tooltip": true,
+		"on-click": "blueman-manager",
+	},
+	"battery": {
+		//"interval": 5,
+		"align": 0,
+		"rotate": 0,
+		//"bat": "BAT1",
+		//"adapter": "ACAD",
+		"full-at": 100,
+		"design-capacity": false,
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": " {capacity}%",
+		"format-plugged": "󱘖 {capacity}%",
+		"format-alt-click": "click",
+		"format-full": "{icon} Full",
+		"format-alt": "{icon} {time}",
+		"format-icons": [
+			"󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+		],
+		"format-time": "{H}h {M}min",
+		"tooltip": true,
+		"tooltip-format": "{timeTo} {power}w",
+		"on-click-middle": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
+		"on-click-right": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon}",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-muted": "",
+		"format-icons": {
+			"alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+			"alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"phone-muted": "",
+			"portable": "",
+			"car": "",
+			"default": ["", ""]
+		},
+		"scroll-step": 1,
+		"on-click": "pavucontrol",
+		"ignored-sinks": ["Easy Effects Sink"]
+	},
+	"tray": {
+		"icon-size": 20,
+		"spacing": 4,
+	}
+}

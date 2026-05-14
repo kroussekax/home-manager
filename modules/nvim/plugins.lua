@@ -194,11 +194,6 @@ require("mason-lspconfig").setup({
 				capabilities = capabilities,
 				cmd = { vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer") },
 				settings = {
-					["rust-analyzer"] = {
-						cargo = {
-							allFeatures = true;
-						},
-					},
 					Lua = {
 						runtime = { version = "Lua 5.1" },
 						diagnostics = {
@@ -207,6 +202,19 @@ require("mason-lspconfig").setup({
 					}
 				}
 			}
+			lspconfig.rust_analyzer.setup({
+				cmd = { vim.fn.expand("/home/kax/.nix-profile/bin/rust-analyzer")},
+				settings = {
+					["rust-analyzer"] = {
+						checkOnSave = false,
+						cargo = {
+							buildScripts = {
+								enable = false,
+							},
+						},
+					},
+				},
+			})
 		end,
 	}
 })

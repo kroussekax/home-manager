@@ -26,9 +26,9 @@ let
 	blurSpecialWs = "false";
 	blurPopups = "true";
 	blurInputMethods = "true";
-	blurSize = "8";
+	blurSize = "4";
 	blurPasses = "2";
-	blurXray = "false";
+	blurXray = "true";
 
 # Shadow
 	shadowEnabled = "true";
@@ -123,7 +123,7 @@ in
 			windowrule = [
 				"match:class zen-beta, workspace 1, opacity 1.0"
 				"match:class com.obsproject.Studio, workspace 3, float true, size 1834 1028, move 80 46"
-				"match:class vesktop, workspace 3. float true, size 91 1028, move 6 46"
+				"match:class vesktop, workspace 3, float true, size 91 1028, move 6 46"
 				"match:class Spotify, workspace 4"
 
 				"match:title Youtube, workspace 1, opacity 1.0"
@@ -140,15 +140,6 @@ in
 			];
 
 			bind = [
-				" , XF86AudioRaiseVolume, exec, volumectl -u up"
-				" , XF86AudioLowerVolume, exec, volumectl -u down"
-
-				" , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-				" , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
-				"SUPER, XF86AudioRaiseVolume, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 2.0}')\""
-				"SUPER, XF86AudioLowerVolume, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 2.0}')\""
-
 				"Super, F, fullscreen, 0"
 
 				"Super, Return, exec, ${terminal}"
@@ -205,6 +196,8 @@ in
 				"Super, G, togglegroup"
 				"Super+Alt, G, lockactivegroup, toggle"
 
+				"Super, R, exec, hyprctl keyword monitor eDP-1,transform,3"
+
 				"Super+Shift, Slash, exec, systemctl suspend-then-hibernate"
 				"Super, P, pseudo"
 
@@ -225,6 +218,20 @@ in
 				"Super+SHIFT, k, resizeactive, 0 -10"
 				"Super+SHIFT, j, resizeactive, 0 10"
 
+				" , XF86AudioRaiseVolume, exec, volumectl -u up"
+				" , XF86AudioLowerVolume, exec, volumectl -u down"
+
+				", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+				", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+				", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+				", XF86MonBrightnessUp, exec, brightnessctl set 10%+"
+				", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+
+				", XF86AudioForward, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor * 2.0}')\""
+				", XF86AudioRewind, exec, hyprctl keyword cursor:zoom_factor \"$(hyprctl getoption cursor:zoom_factor | awk 'NR==1 {factor = $2; if (factor < 1) {factor = 1}; print factor / 2.0}')\""
+
+
 			];
 
 			bindm = [
@@ -241,8 +248,9 @@ in
 				", XF86AudioRaiseVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ $volumeStep%+"
 				", XF86AudioLowerVolume, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; wpctl set-volume @DEFAULT_AUDIO_SINK@ $volumeStep%-"
 
-
-				"Super+Shift, C, exec, hyprpicker -a"
+				", XF86AudioPlay, exec, playerctl play-pause"
+				", XF86AudioNext, exec, playerctl next"
+				", XF86AudioPrev, exec, playerctl previous"
 
 				"Super, C, sendshortcut, , C, class:^(com\\.obsproject\\.Studio)$"
 				"Super, V, sendshortcut, , V, class:^(com\\.obsproject\\.Studio)$"
@@ -327,6 +335,7 @@ in
 
 				"_JAVA_AWT_WM_NONREPARENTING, 1"
 
+				"SSH_AUTH_SOCK,$XDG_RUNTIME_DIR/keyring/ssh"
 			];
 
 			decoration = {
@@ -367,6 +376,12 @@ in
 				"${gestureFingersMore}, down, dispatcher, exec, systemctl suspend-then-hibernate"
 			];
 
+			layerrule = [
+				"blur on, match:namespace ambxst"
+				"ignore_alpha 0.3, match:namespace ambxst"
+				"blur_popups on, match:namespace ambxst"
+			];
+
 			group = {
 				groupbar = {
 					font_family = "JetBrains Mono NF";
@@ -386,6 +401,8 @@ in
 				numlock_by_default = false;
 				repeat_delay = 250;
 				repeat_rate = 35;
+				#kb_options = "caps:swapescape";
+
 
 				focus_on_close = 1;
 
@@ -432,12 +449,12 @@ in
 
 				"mpris-proxy"
 
-				"ambxst"
+				"awww-daemon"
+				"waybar -c /home/kax/dotfiles/modules/waybar/config.jsonc -s /home/kax/dotfiles/modules/waybar/style.css"
 
 				"[workspace 1; pseudo] zen-beta"
 				"[workspace 2 ] kitty"
 				"[workspace 3 ] vesktop"
-				"[workspace 3 ] obs"
 				"[workspace 4 ] spotify"
 				];
 		};

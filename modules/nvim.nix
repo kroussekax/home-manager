@@ -53,7 +53,15 @@
 			trouble-nvim
 			nvim-ufo
 
-			nvim-treesitter
+			(nvim-treesitter.withPlugins
+			 (p: [
+			  p.nix
+			  p.rust
+			  p.cpp
+			  p.lua
+			  p.html
+			  p.css
+			 ]))
 
 			# colorschemes
 			rose-pine

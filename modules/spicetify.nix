@@ -13,10 +13,9 @@ in {
 		enable = true;
 		enabledExtensions = with spicePkgs.extensions; [
 			adblockify
-				hidePodcasts
-				shuffle
+			hidePodcasts
+			shuffle
 		];
-		theme = spicePkgs.themes.catppuccin;
-		colorScheme = "mocha";
+		theme = spicePkgs.themes.hazy;
 	};
 }

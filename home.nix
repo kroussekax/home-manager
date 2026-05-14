@@ -11,10 +11,11 @@
 	home.username = "kax";
 	home.homeDirectory = "/home/kax";
 
-	home.stateVersion = "25.11";
+	home.stateVersion = "26.05";
 
 	home.sessionVariables = {
 		NIXOS_OZONE_WL = "1";
+		QT_QPA_PLATFORM = "wayland";
 	};
 
 	home.sessionPath = [
@@ -31,31 +32,44 @@
 
 		tmux
 		zsh
-		pavucontrol
 		ripgrep
 		unzip
 		wget
 		yad
 		fzf
+		scrcpy
+		ffmpeg
+		lzip
+		rnote
 
 		fastfetch
 		notify-desktop
 		xsettingsd
 
 		nodejs
+		zola
 
 		gcc
 		cmake
 		ninja
+		gnumake
 
 		lua
 		lua54Packages.luarocks
 
+		python313Packages.pip
+
+		jdk25
+
 		go
 		rustup
-		python3
 		zig
 		gawk
+
+		dejavu_fonts
+		font-awesome_4
+
+		playerctl
 
 		nerd-fonts.jetbrains-mono
 		gnome-themes-extra
@@ -63,17 +77,19 @@
 		bibata-cursors
 
 		steam
-		libreoffice
+		heroic
 
 		gh
 		vial
 		platformio
-		gimp
 		localsend
 		bear
 		bluez
 		bluez-headers
 		oh-my-posh
+		(gimp-with-plugins.override {
+		 plugins = with gimpPlugins; [ resynthesizer ];
+		 })
 
 		thunar
 		thunar-archive-plugin
@@ -82,10 +98,20 @@
 		file-roller
 		blender
 
-		#EwineWow64Packages.stable
-		#wineWow64Packages.waylandFull
-		#winetricks
+		wineWow64Packages.stable
+		winetricks
 
-		(builtins.getFlake "git+file:///home/kax/gits/Ambxst?rev=857d8ce843eaa121e066f2ed91add7bb02caeb46").packages.${pkgs.system}.default
+		qt6.qtwayland
+		
+		#hyprland stuff
+		hyprpicker
+		brightnessctl
+		blueman
+		quickshell
+		waybar
+		 
+		inputs.awww.packages.${system}.awww
+
+		#(builtins.getFlake "git+file:///home/kax/gits/ReallyGoodShell?rev=dbaba71853dab3dc6a0d165f44be5d947edd25b9").packages.${pkgs.system}.default
 	];
 }

@@ -9,8 +9,8 @@
 		};
 
 		iconTheme = {
-			name = "Papirus-Dark";
-			package = pkgs.papirus-icon-theme;
+			name = "arashi";
+			package = pkgs.arashi;
 		};
 
 		cursorTheme = {
@@ -27,6 +27,14 @@
 		font = {
 			name = "Inter";
 			size = 11;
+		};
+
+		gtk3.extraConfig = {
+			gtk-application-prefer-dark-theme = true;
+		};
+
+		gtk4.extraConfig = {
+			gtk-application-prefer-dark-theme = true;
 		};
 	};
 }

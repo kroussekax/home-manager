@@ -31,21 +31,6 @@ vim.o.foldenable = true
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
--- Option 2: nvim lsp as LSP client
--- Tell the server the capability of foldingRange,
--- Neovim hasn't added foldingRange to default capabilities, users must add it manually
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true
-}
-local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-	require('lspconfig')[ls].setup({
-		capabilities = capabilities
-		-- you can add other fields for setting up lsp server in this table
-	})
-end
 require('ufo').setup()
 
 require("trouble").setup({
@@ -175,48 +160,11 @@ local capabilities = vim.tbl_deep_extend(
 capabilities.textDocument.completion.snippetSupport = false
 
 require("fidget").setup({})
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"lua_ls",
-	},
-	handlers = {
-		function(server_name) -- default handler (optional)
 
-			require("lspconfig")[server_name].setup {
-				capabilities = capabilities
-			}
-		end,
-
-		["lua_ls"] = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup {
-				capabilities = capabilities,
-				cmd = { vim.fn.expand("~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer") },
-				settings = {
-					Lua = {
-						runtime = { version = "Lua 5.1" },
-						diagnostics = {
-							globals = { "vim", "it", "describe", "before_each", "after_each" },
-						}
-					}
-				}
-			}
-			lspconfig.rust_analyzer.setup({
-				cmd = { vim.fn.expand("/home/kax/.nix-profile/bin/rust-analyzer")},
-				settings = {
-					["rust-analyzer"] = {
-						checkOnSave = false,
-						cargo = {
-							buildScripts = {
-								enable = false,
-							},
-						},
-					},
-				},
-			})
-		end,
-	}
+vim.lsp.enable({
+  'clangd',
+  'lua_ls',
+  'rust_analyzer',
 })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

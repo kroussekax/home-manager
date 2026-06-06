@@ -50,6 +50,7 @@
 		zola
 
 		gcc
+		clang-tools
 		cmake
 		ninja
 		gnumake
@@ -110,6 +111,10 @@
 		quickshell
 		waybar
 		 
+		aseprite
+
+		kdePackages.kdenlive
+
 		inputs.awww.packages.${system}.awww
 
 		#(builtins.getFlake "git+file:///home/kax/gits/ReallyGoodShell?rev=dbaba71853dab3dc6a0d165f44be5d947edd25b9").packages.${pkgs.system}.default

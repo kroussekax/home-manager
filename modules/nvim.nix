@@ -33,8 +33,7 @@
 			harpoon
 
 			# lsp dependencies
-			mason-nvim
-			mason-lspconfig-nvim
+			nvim-lspconfig
 			cmp-nvim-lsp
 			cmp-buffer
 			cmp-path

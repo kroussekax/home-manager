@@ -97,21 +97,21 @@ hl.device({
 	output = "eDP-1"
 })
 
-hl.on("hyprland.start", function () 
+hl.on("hyprland.start", function ()
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
 	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 	hl.exec_cmd("trash-empty 30")
 	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 20")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
 	hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
 	hl.exec_cmd("sleep 1 && gammastep")
-	hl.exec_cmd("iio-hyprland")
 	hl.exec_cmd("mpris-proxy")
 	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("waybar -c /home/kax/dotfiles/modules/waybar/config.jsonc -s /home/kax/dotfiles/modules/waybar/style.css")
+
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
 
 	hl.exec_cmd("zen-beta", {workspace = 1})
 	hl.exec_cmd("kitty", {workspace = 2})
@@ -125,13 +125,19 @@ hl.gesture({
 	action = "workspace"
 })
 
-
-
 hl.monitor({
 	output = "HDMI-A-1",
 	mode = "1920x1080@160",
 	position = "0x0",
 	scale = 1
+})
+
+hl.monitor({
+	output = "eDP-1",
+	mode = "1920x1200@60",
+	position = "1920x0",
+	scale = 1.2,
+	transform = 0
 })
 
 hl.window_rule({
@@ -175,22 +181,31 @@ hl.workspace_rule( {workspace = "10", monitor = "HDMI-A-1"} )
 
 hl.workspace_rule( {workspace = "4", monitor = "eDP-1"} )
 
-hl.env("GTK_THEME",                      "Nord")
-hl.env("QT_QPA_PLATFORMTHEME",           "qt6ct")
+-- Layer Rules
+hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
+hl.layer_rule({ match = { namespace = "rofi" }, blur = true })
+
+-- Env Values
+hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
+hl.env("XCURSOR_SIZE", "24")
+
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
-hl.env("QT_AUTO_SCREEN_SCALE_FACTOR",    "1")
-hl.env("XCURSOR_THEME",                  "Bibata-Modern-Ice")
-hl.env("XCURSOR_SIZE",                   "20")
-hl.env("GDK_BACKEND",                    "wayland,x11")
-hl.env("QT_QPA_PLATFORM",               "wayland;xcb")
-hl.env("SDL_VIDEODRIVER",               "wayland,x11,windows")
-hl.env("CLUTTER_BACKEND",               "wayland")
-hl.env("ELECTRON_OZONE_PLATFORM_HINT",  "auto")
-hl.env("XDG_CURRENT_DESKTOP",           "Hyprland")
-hl.env("XDG_SESSION_TYPE",              "wayland")
-hl.env("XDG_SESSION_DESKTOP",           "Hyprland")
-hl.env("_JAVA_AWT_WM_NONREPARENTING",   "1")
-hl.env("SSH_AUTH_SOCK",                 "$XDG_RUNTIME_DIR/keyring/ssh")
+hl.env("QT_AUTO_SCREEN_SCALE_FACTOR", "1")
+
+hl.env("SDL_VIDEODRIVER", "wayland,x11")
+hl.env("CLUTTER_BACKEND", "wayland")
+
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
+
+hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
+hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("XDG_SESSION_DESKTOP", "Hyprland")
+
+hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
+
+hl.env("SSH_AUTH_SOCK", "$XDG_RUNTIME_DIR/keyring/ssh")
 
 -- Curves (beziers)
 hl.curve("wind",            { type = "bezier", points = { {0.05, 0.9},  {0.1,  1.05} } })
@@ -301,8 +316,29 @@ hl.bind("CTRL + SUPER + SHIFT + k", hl.dsp.window.move({ workspace = "special:sp
 hl.bind("CTRL + SUPER + SHIFT + j", hl.dsp.window.move({ workspace = "e+0" }))
 
 -- Misc
-hl.bind("SUPER + R",            hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"eDP-1\", mode = \"1920x1200@60\", position = \"1920x0\", scale = 1.2, transform = 1})'"))
-hl.bind("SUPER + T",            hl.dsp.exec_cmd("hyprctl dispatch 'hl.monitor({ output = \"eDP-1\", mode = \"1920x1200@60\", position = \"1920x0\", scale = 1.2, transform = 0})'"))
+hl.bind("SUPER + R", function()
+	local transform_value = 0
+	if hl.get_monitor("eDP-1").transform == 0 then
+		transform_value = 3
+	elseif hl.get_monitor("eDP-1").transform == 3 then
+		transform_value = 0
+	end
+
+	hl.config({
+		input = {
+			touchdevice = {
+				transform = transform_value
+			}
+		}
+	})
+	hl.monitor({
+		output = "eDP-1",
+		mode = "1920x1200@60",
+		position = "1920x0",
+		scale = 1.2,
+		transform = transform_value
+	})
+end)
 
 -- Audio (repeating)
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("volumectl -u up"),                              { repeating = true })
@@ -341,3 +377,17 @@ hl.bind("SUPER + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind("SUPER + mouse:273", hl.dsp.window.resize(), { mouse = true })
 hl.bind("SUPER + X",         hl.dsp.window.resize(), { mouse = true })
 
+-- Screenshot
+hl.bind("SUPER + S", hl.dsp.exec_cmd("grimblast save active - | swappy -f -"))
+hl.bind("SUPER + SHIFT + S", hl.dsp.exec_cmd("grimblast save area - | swappy -f -"))
+
+-- Notifications
+hl.bind("SUPER + Y", hl.dsp.exec_cmd("swaync-client -t"))
+hl.bind("SUPER + SHIFT + Y", hl.dsp.exec_cmd("swaync-client -C"))
+
+-- Rofi
+hl.bind("SUPER + D", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']]))
+hl.bind("SUPER + ALT + V", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || cliphist list | rofi -dmenu | cliphist decode | wl-copy']]))
+
+
+-- Switches

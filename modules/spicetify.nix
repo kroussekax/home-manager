@@ -1,6 +1,3 @@
-# For NixOS: spicetify-nix.nixosModules.spicetify
-# For Home Manager: spicetify-nix.homeManagerModules.spicetify
-
 { pkgs, inputs, ... }:
 let
 spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};

@@ -1,0 +1,13 @@
+* {
+    bg: {{background}};
+    fg: {{foreground}};
+    accent: {{color4}};
+}
+
+window {
+    background-color: @bg;
+}
+
+element selected {
+    background-color: @accent;
+}

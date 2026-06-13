@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 let
-  colors = builtins.fromJSON (builtins.readFile /home/kax/.cache/ambxst/colors.json);
 in
 {
 	programs.tmux = {
@@ -14,8 +13,8 @@ in
 			set -g @rose_pine_variant "main"
 			set -g @rose_pine_transparent_background "on"
 
-			set -g pane-border-style fg=${colors.surfaceBright} 
-			set -g pane-active-border-style fg=${colors.surfaceBright}
+			set -g pane-border-style fg=#000000
+			set -g pane-active-border-style fg=#000000
 
 			setw -g mode-keys vi
 			set -g mouse on

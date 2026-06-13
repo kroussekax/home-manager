@@ -22,101 +22,98 @@
 		"$HOME/.cargo/bin"
 	];
 
+	services.swaync.enable = true;
+
+	home.file = {
+		".config/wallust".source = ./modules/wallust;
+
+		".local/share/rofi/themes/spotlight.rasi".source = ./modules/rofi/spotlight.rasi;
+	};
+
 	home.packages = with pkgs; [
+		# Communication
 		vesktop
-		kitty
+		localsend
 
-		git
-
+		# Games
+		steam
 		prismlauncher
 
-		tmux
-		zsh
-		ripgrep
-		unzip
-		wget
-		yad
-		fzf
-		scrcpy
-		ffmpeg
-		lzip
-		rnote
-
-		fastfetch
-		notify-desktop
-		xsettingsd
-
-		nodejs
-		zola
-
-		gcc
-		clang-tools
-		cmake
-		ninja
-		gnumake
-
-		lua
-		lua54Packages.luarocks
-
-		python313Packages.pip
-
-		jdk25
-
-		go
-		rustup
-		zig
-		gawk
-
-		dejavu_fonts
-		font-awesome_4
-
-		playerctl
-
-		nerd-fonts.jetbrains-mono
-		gnome-themes-extra
-		papirus-icon-theme
-		bibata-cursors
-
-		steam
-		heroic
-
-		gh
+		# Creatives
+		kitty
+		blender
+		blueman
+		aseprite
 		vial
-		platformio
-		localsend
-		bear
-		bluez
-		bluez-headers
-		oh-my-posh
-		(gimp-with-plugins.override {
-		 plugins = with gimpPlugins; [ resynthesizer ];
-		 })
+		obsidian
+		(gimp-with-plugins.override { plugins = with gimpPlugins; [ resynthesizer ]; })
 
+		# Screenshots
+		swappy
+		grim
+		slurp
+		grimblast
+
+		# Thunar
 		thunar
 		thunar-archive-plugin
 		thunar-volman
 		unrar
 		file-roller
-		blender
 
-		wineWow64Packages.stable
-		winetricks
-
-		qt6.qtwayland
-		
-		#hyprland stuff
-		hyprpicker
+		# CLI
+		tmux
+		git
+		gh
+		fastfetch
+		ripgrep
+		unzip
+		wget
+		fzf
+		scrcpy
+		ffmpeg
+		nodejs
+		playerctl
+		notify-desktop
+		cava
 		brightnessctl
-		blueman
-		quickshell
+		wl-clipboard
+		cliphist
+		wallust
+
+		# Coding
+		zsh
+		gcc
+		clang-tools
+		cmake
+		ninja
+		gnumake
+		lua
+		lua54Packages.luarocks
+		lua-language-server
+		python313Packages.pip
+		jdk25
+		go
+		rustup
+		zig
+		gawk
+		platformio
+		(pkgs.python3.withPackages (ps: with ps; []))
+
+		# Fonts and Icons
+		dejavu_fonts
+		font-awesome_4
+		nerd-fonts.jetbrains-mono
+		bibata-cursors
+		papirus-icon-theme
+		dconf-editor
+
+		# Hyprland
+		hyprpicker
 		waybar
-		 
-		aseprite
-
-		kdePackages.kdenlive
-
+		hyprlock
 		inputs.awww.packages.${system}.awww
-
-		#(builtins.getFlake "git+file:///home/kax/gits/ReallyGoodShell?rev=dbaba71853dab3dc6a0d165f44be5d947edd25b9").packages.${pkgs.system}.default
+		qt6.qtwayland
+		rofi
 	];
 }

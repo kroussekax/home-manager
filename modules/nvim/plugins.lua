@@ -165,6 +165,7 @@ vim.lsp.enable({
   'clangd',
   'lua_ls',
   'rust_analyzer',
+  'html',
 })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

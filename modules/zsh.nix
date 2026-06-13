@@ -8,8 +8,6 @@
 		};
 
 		initContent = ''
-			eval "$(oh-my-posh init zsh --config $HOME/.config/omp/zen.toml)"
-
 			zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 			zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
 			zstyle ':completion:*' menu no
@@ -27,7 +25,7 @@
 				owner = "zdharma-continuum";
 				repo = "zinit";
 				rev = "main";
-				sha256 = "sha256-wmNk0HIqwayU2ISbn6vzDetbM2TWmSn4CZzJNpR8E+s=";
+				sha256 = "sha256-hsBQvXqy6aNBdqdo3AkKVsw4ch4sd1I/D4eJ59V8g84=";
 			};
 		}
 		];

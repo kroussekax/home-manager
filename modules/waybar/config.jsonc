@@ -1,7 +1,7 @@
 [
 	{
 		"include": [
-			"/home/kax/dotfiles/modules/waybar/Modules"
+			"$HOME/dotfiles/modules/waybar/Modules.jsonc"
 		],
 
 		"layer": "top",
@@ -11,24 +11,31 @@
 		"spacing": 0,
 		"fixed-center": true,
 		"ipc": true,
-		"margin-top": 0,
-		"margin-left": 8,
-		"margin-right": 8,
+		"margin-top": 10,
+		"margin-left": 30,
+		"margin-right": 30,
 
 		"modules-left": [
-			"hyprland/window"
+			"hyprland/workspaces#kanji",
+			"cava"
 		],
 
 		"modules-center": [
-			"hyprland/workspaces#kanji"
+			"custom/notifications",
+			"clock",
+			"custom/dot",
+			"hyprland/window",
+			"custom/dot",
+			"custom/media"
 		],
 
 		"modules-right": [
 			"tray",
+			"custom/dot",
 			"bluetooth",
+			"network",
 			"pulseaudio",
-			"battery",
-			"clock"
+			"battery"
 		]
 	}
 ]

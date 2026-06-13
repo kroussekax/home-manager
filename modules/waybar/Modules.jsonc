@@ -18,12 +18,37 @@
 				"7": "七",
 				"8": "八",
 				"9": "九",
-				"10": "十",
+				"10": "十"
 			}
+	},
+	"custom/notifications": {
+		"tooltip": false,
+		"format": "{icon} ",
+		"format-icons": {
+			"notification": "󰂚",
+			"none": "󰂜",
+			"dnd-notification": "󰂛",
+			"dnd-none": "󰂛"
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "sleep 0.1 && swaync-client -t -sw",
+		"on-click-right": "sleep 0.1 && swaync-client -d -sw",
+		"escape": true
+	},
+	"custom/dot": {
+		"format": "•",
+		"tooltip": false
+	},
+	"custom/media": {
+		"exec": "playerctl metadata --format '{{title}}'",
+		"interval": 1,
+		"max-length": 40
 	},
 	"hyprland/window": {
 		"format": "{}",
-		"max-length": 20,
+		"max-length": 10,
 		"separate-outputs": true,
 		"offscreen-css": true,
 		"offscreen-css-text": "(inactive)",
@@ -31,13 +56,21 @@
 			"(.*) — Mozilla Firefox": " $1",
 			"(.*) - fish": "> [$1]",
 			"(.*) - zsh": "> [$1]",
-			"(.*) - $term": "> [$1]",
-		},
+			"(.*) - $term": "> [$1]"
+		}
 	},
+	"cava": {
+		"cava_config": "$HOME/dotfiles/modules/waybar/cava.conf",
+		"input_delay": 1,
+		"format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+		"actions": {
+			"on-click-right": "mode"
+		}
+	},
+
 	"clock": {
 		"interval": 1,
-		//"format": " {:%I:%M %p}", // AM PM format
-		"format": " {:%H:%M:%S}", // 24H
+		"format": "{:%H:%M}", // 24H
 		"format-alt": " {:%H:%M   %Y, %d %B, %A}",
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"calendar": {
@@ -62,7 +95,7 @@
 		"tooltip-format-connected": "{device_enumerate}",
 		"tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
 		"tooltip": true,
-		"on-click": "blueman-manager",
+		"on-click": "blueman-manager"
 	},
 	"battery": {
 		//"interval": 5,
@@ -77,20 +110,30 @@
 			"warning": 30,
 			"critical": 15
 		},
-		"format": "{icon} {capacity}%",
-		"format-charging": " {capacity}%",
-		"format-plugged": "󱘖 {capacity}%",
+		"format": "{capacity}% ",
+		"format-charging": " {capacity}% ",
+		"format-plugged": "󱘖 {capacity}% ",
 		"format-alt-click": "click",
-		"format-full": "{icon} Full",
+		"format-full": "Full ",
 		"format-alt": "{icon} {time}",
 		"format-icons": [
 			"󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
 		],
 		"format-time": "{H}h {M}min",
 		"tooltip": true,
-		"tooltip-format": "{timeTo} {power}w",
-		"on-click-middle": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
-		"on-click-right": "$HOME/.config/hypr/scripts/Wlogout.sh",
+		"tooltip-format": "{timeTo} {power}w"
+	},
+	"network": {
+		"interface": "wlp2s0",
+		"format": "{ifname}",
+		"format-wifi": "{essid} ({signalStrength}%) ",
+		"format-ethernet": "{ipaddr}/{cidr} 󰊗",
+		"format-disconnected": "", //An empty format will hide the module.
+		"tooltip-format": "{ifname} via {gwaddr} 󰊗",
+		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+		"tooltip-format-ethernet": "{ifname} ",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50
 	},
 	"pulseaudio": {
 		"format": "{volume}% {icon}",
@@ -114,6 +157,6 @@
 	},
 	"tray": {
 		"icon-size": 20,
-		"spacing": 4,
+		"spacing": 4
 	}
 }

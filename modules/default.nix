@@ -1,8 +1,9 @@
 {
 	imports = [
 		./gtk.nix
-
 		./hyprland.nix
+		./swaync.nix
+		./fastfetch.nix
 		./obs.nix
 		./zen.nix
 		./zsh.nix

@@ -13,8 +13,10 @@ in
 			set -g @rose_pine_variant "main"
 			set -g @rose_pine_transparent_background "on"
 
-			set -g pane-border-style fg=#000000
-			set -g pane-active-border-style fg=#000000
+			set -g pane-border-style fg=#282828
+			set -g pane-active-border-style fg=#282828
+
+			set -g status-style "bg=#282828,fg=#ebdbb2"
 
 			setw -g mode-keys vi
 			set -g mouse on

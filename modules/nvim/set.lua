@@ -35,6 +35,91 @@ function ColorMyPencils(color)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
+	fg =  "#ebdbb2"
+	bg =  "#282828"
+
+	vim.api.nvim_set_hl(0, "ColorColumn", {
+		bg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "WinSeparator", {
+		fg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "StatusLine", {
+		fg = fg,
+		bg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "StatusLineNC", {
+		fg = "#928374",
+		bg = bg,
+	})
+	vim.api.nvim_set_hl(0, "EndOfBuffer", {
+		fg = bg,
+	})
+	vim.api.nvim_set_hl(0, "LineNr", {
+		fg = "#665c54",
+	})
+
+	vim.api.nvim_set_hl(0, "Pmenu", {
+		bg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "PmenuSel", {
+		bg = "#3c3836",
+	})
+
+	vim.api.nvim_set_hl(0, "CursorLineNr", {
+		fg = fg,
+	})
+	vim.api.nvim_set_hl(0, "FloatBorder", {
+		fg = bg,
+		bg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "FloatTitle", {
+		fg = fg,
+		bg = bg,
+	})
+
+	vim.api.nvim_set_hl(0, "TelescopePromptTitle", {
+		fg = "#ebdbb2",
+		bg = "#282828",
+	})
+
+	vim.api.nvim_set_hl(0, "TelescopeResultsTitle", {
+		fg = "#ebdbb2",
+		bg = "#282828",
+	})
+
+	vim.api.nvim_set_hl(0, "TelescopePreviewTitle", {
+		fg = "#ebdbb2",
+		bg = "#282828",
+	})
 end
 
 ColorMyPencils()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

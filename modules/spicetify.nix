@@ -13,6 +13,6 @@ in {
 			hidePodcasts
 			shuffle
 		];
-		theme = spicePkgs.themes.hazy;
+		#theme = spicePkgs.themes.hazy;
 	};
 }

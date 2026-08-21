@@ -20,16 +20,7 @@
 
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-		wine-gdk = {
-			url = "github:Weather-OS/WineGDK"; # replace with actual repo
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		#hyprland stuff
-		quickshell = {
-			url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
 		awww = {
 			url = "git+https://codeberg.org/LGFae/awww";
 			inputs.nixpkgs.follows = "nixpkgs";

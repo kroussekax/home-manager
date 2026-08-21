@@ -14,19 +14,23 @@
 	home.stateVersion = "26.05";
 
 	home.sessionVariables = {
-		NIXOS_OZONE_WL = "1";
 		QT_QPA_PLATFORM = "wayland";
+
+		GTK_THEME = "Dracula";
+
+		QT_QPA_PLATFORMTHEME = "gtk3";
+
+		XCURSOR_THEME = "Bibata-Modern-Ice";
+		XCURSOR_SIZE = "24";
+
+		NIXOS_OZONE_WL = "1";
 	};
 
 	home.sessionPath = [
 		"$HOME/.cargo/bin"
 	];
 
-	services.swaync.enable = true;
-
 	home.file = {
-		".config/wallust".source = ./modules/wallust;
-
 		".local/share/rofi/themes/spotlight.rasi".source = ./modules/rofi/spotlight.rasi;
 	};
 
@@ -34,19 +38,32 @@
 		# Communication
 		vesktop
 		localsend
+		qbittorrent
+		filezilla
 
 		# Games
 		steam
 		prismlauncher
+		azahar
 
 		# Creatives
+		gnome-tweaks
 		kitty
-		blender
-		blueman
 		aseprite
 		vial
+		mpv
+		papers
+		(gimp-with-plugins.override {
+			plugins = with gimpPlugins; [ 
+			resynthesizer
+
+		];})
 		obsidian
-		(gimp-with-plugins.override { plugins = with gimpPlugins; [ resynthesizer ]; })
+		nextcloud-client
+		pavucontrol
+
+		# KDE
+		kdePackages.kdeconnect-kde
 
 		# Screenshots
 		swappy
@@ -62,10 +79,15 @@
 		file-roller
 
 		# CLI
+		libinput
+		typescript
+		typescript-language-server
+		android-tools
+		davfs2
 		tmux
+		ani-cli
 		git
 		gh
-		fastfetch
 		ripgrep
 		unzip
 		wget
@@ -79,25 +101,19 @@
 		brightnessctl
 		wl-clipboard
 		cliphist
-		wallust
+		v4l-utils
+		geoclue2
 
 		# Coding
-		zsh
-		gcc
 		clang-tools
-		cmake
-		ninja
-		gnumake
+		zsh
 		lua
 		lua54Packages.luarocks
 		lua-language-server
 		python313Packages.pip
 		jdk25
 		go
-		rustup
 		zig
-		gawk
-		platformio
 		(pkgs.python3.withPackages (ps: with ps; []))
 
 		# Fonts and Icons
@@ -107,6 +123,10 @@
 		bibata-cursors
 		papirus-icon-theme
 		dconf-editor
+		inter
+		dracula-theme
+		kdePackages.qtstyleplugin-kvantum
+		dracula-icon-theme
 
 		# Hyprland
 		hyprpicker
@@ -115,5 +135,6 @@
 		inputs.awww.packages.${system}.awww
 		qt6.qtwayland
 		rofi
+		wvkbd
 	];
 }

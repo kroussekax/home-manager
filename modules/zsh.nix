@@ -2,32 +2,27 @@
 {
 	programs.zsh = {
 		enable = true;
+		enableCompletion = true;
+		autosuggestion.enable = true;
+		syntaxHighlighting.enable = true;
 
 		shellAliases = {
 			ls = "ls --color";
 		};
 
 		initContent = ''
+			autoload -Uz compinit
+			compinit -C
+
 			zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-			zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-			zstyle ':completion:*' menu no
-			zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
-			eval "$(fzf --zsh)"
+			autoload -Uz edit-command-line
+			zle -N edit-command-line
 
-			stty -ixon
-			'';
+			bindkey '^E' edit-command-line
 
-		plugins = [
-		{
-			name = "zinit";
-			src = pkgs.fetchFromGitHub {
-				owner = "zdharma-continuum";
-				repo = "zinit";
-				rev = "main";
-				sha256 = "sha256-hsBQvXqy6aNBdqdo3AkKVsw4ch4sd1I/D4eJ59V8g84=";
-			};
-		}
-		];
+			if command -v fzf >/dev/null; then
+				source <(fzf --zsh)
+			fi'';
 	};
 }

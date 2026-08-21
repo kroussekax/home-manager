@@ -164,8 +164,11 @@ require("fidget").setup({})
 vim.lsp.enable({
   'clangd',
   'lua_ls',
+  'ts_ls',
   'rust_analyzer',
   'html',
+  'zsh',
+  'bash',
 })
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

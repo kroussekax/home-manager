@@ -17,15 +17,18 @@ hl.config({
 			popups = true,
 			size = 4,
 			special = false,
-			xray = true,
+			xray = false,
 		},
 
 		shadow = {
 			enabled = true,
+			color = "#282828B3",
 			range = 20,
 			render_power = 3,
 		},
-		rounding = 10
+
+		rounding = 10,
+		fullscreen_opacity = 1.0
 	},
 
 	general = {
@@ -35,12 +38,13 @@ hl.config({
 
 		gaps_workspaces = 20,
 		gaps_in = 10,
-		gaps_out = 20,
+		gaps_out = 10,
 		border_size = 3,
 
 		col = {
-			active_border = "rgba(131317FF)",
-			inactive_border = "rgba(e5e1e711)"
+			active_border = "rgba(e5e1e711)",
+			inactive_border = "rgba(131317FF)",
+
 		}
 	},
 
@@ -70,6 +74,22 @@ hl.config({
 			gradients = true,
 			height = 25,
 			indicator_height = 0,
+
+			col = {
+				active = "rgba(131317FF)",
+				inactive = "rgba(e5e1e711)",
+
+				locked_active = "rgba(131317FF)",
+				locked_inactive = "rgba(e5e1e711)"
+			}
+		},
+
+		col = {
+			border_active = "rgba(131317FF)",
+			border_inactive =  "rgba(131317FF)",
+
+			border_locked_active = "rgba(e5e1e711)",
+			border_locked_inactive = "rgba(131317FF)",
 		}
 	},
 
@@ -99,24 +119,25 @@ hl.device({
 
 hl.on("hyprland.start", function ()
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
-	hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+	hl.exec_cmd("/run/current-system/sw/libexec/polkit-gnome-authentication-agent-1")
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 	hl.exec_cmd("trash-empty 30")
 	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 20")
 	hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
-	hl.exec_cmd("sleep 1 && gammastep")
 	hl.exec_cmd("mpris-proxy")
+	hl.exec_cmd("kdeconnectd")
 	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("waybar -c /home/kax/dotfiles/modules/waybar/config.jsonc -s /home/kax/dotfiles/modules/waybar/style.css")
+	hl.exec_cmd("wvkbd-mobintl --hidden -H 400 -L 400 &")
 
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
 
 	hl.exec_cmd("zen-beta", {workspace = 1})
 	hl.exec_cmd("kitty", {workspace = 2})
-	hl.exec_cmd("vesktop", {workspace= 3})
-	hl.exec_cmd("spotify", {workspace= 4})
+	hl.exec_cmd("vesktop &", {workspace = 4})
+	hl.exec_cmd("spotify", {workspace = 4})
 end)
 
 hl.gesture({
@@ -127,7 +148,7 @@ hl.gesture({
 
 hl.monitor({
 	output = "HDMI-A-1",
-	mode = "1920x1080@160",
+	mode = "1920x1080@179",
 	position = "0x0",
 	scale = 1
 })
@@ -140,50 +161,38 @@ hl.monitor({
 	transform = 0
 })
 
-hl.window_rule({
-	match = {
-		class = "zen-beta"
-	},
-	opacity = 0.9
-})
+hl.window_rule({ match = {modal = true}, float = true})
 
-hl.window_rule({
-	match = {
-		class = "vesktop"
-	},
-	workspace = 3
-})
+hl.window_rule({ match = {class = "thunar"}, opacity = 0.9})
+hl.window_rule({ match = {class = "zen-beta"}, opacity = 0.9})
+hl.window_rule({ match = {title = "(?i).*youtube.*"}, opacity = 1})
+hl.window_rule({ match = {title = "Zen Browser"}, opacity = 1})
+hl.window_rule({ match = {class = "kitty"}, opacity = 1})
+hl.window_rule({ match = {class = "gimp"}, opacity = 1})
 
-hl.window_rule({
-	match = {
-		class = "Spotify"
-	},
-	workspace = 4,
-	opacity = 1.0
-})
+hl.window_rule({ match = {class = "vesktop"}, workspace = 4})
+hl.window_rule({ match = {class = "Spotify"}, workspace = 4,})
+hl.window_rule({ match = {class = "steam"}, workspace = 5,})
 
-hl.window_rule({
-	match = {
-		class = "[Yy]outube"
-	},
-	workspace = 4
-})
-
-hl.workspace_rule( {workspace = "1", monitor = "HDMI-A-1"} )
-hl.workspace_rule( {workspace = "2", monitor = "HDMI-A-1"} )
-hl.workspace_rule( {workspace = "3", monitor = "HDMI-A-1"} )
-hl.workspace_rule( {workspace = "5", monitor = "HDMI-A-1"} )
+hl.workspace_rule( {workspace = "1", monitor = "HDMI-A-1", persistent = true})
+hl.workspace_rule( {workspace = "2", monitor = "HDMI-A-1", persistent = true} )
+hl.workspace_rule( {workspace = "3", monitor = "HDMI-A-1", persistent = true} )
 hl.workspace_rule( {workspace = "6", monitor = "HDMI-A-1"} )
 hl.workspace_rule( {workspace = "7", monitor = "HDMI-A-1"} )
 hl.workspace_rule( {workspace = "8", monitor = "HDMI-A-1"} )
 hl.workspace_rule( {workspace = "9", monitor = "HDMI-A-1"} )
 hl.workspace_rule( {workspace = "10", monitor = "HDMI-A-1"} )
 
-hl.workspace_rule( {workspace = "4", monitor = "eDP-1"} )
+hl.workspace_rule( {workspace = "4", monitor = "eDP-1", persistent = true} )
+hl.workspace_rule( {workspace = "5", monitor = "eDP-1", persistent = true} )
 
 -- Layer Rules
 hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
+hl.layer_rule({ match = { namespace = "swaync-control-center" }, blur = true, ignore_alpha = 0.6 })
+hl.layer_rule({ match = { namespace = "swaync-notification-window" }, blur = true, ignore_alpha = 0.6})
 hl.layer_rule({ match = { namespace = "rofi" }, blur = true })
+
+hl.window_rule({ match = {fullscreen = true}, opacity = 1})
 
 -- Env Values
 hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
@@ -244,11 +253,12 @@ hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3,   bezier = 
 -- Window management
 hl.bind("SUPER + F",            hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind("SUPER + Return",       hl.dsp.exec_cmd("kitty"))
-hl.bind("SUPER + Q",            hl.dsp.window.kill())
+hl.bind("SUPER + Q",            hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + F",    hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + P",            hl.dsp.window.pseudo())
 hl.bind("SUPER + G",            hl.dsp.group.toggle())
 hl.bind("SUPER + ALT + G",      hl.dsp.group.lock())
+hl.bind("SUPER + CTRL + TAB",   hl.dsp.group.next())
 
 -- Focus movement
 hl.bind("SUPER + h",            hl.dsp.focus({ direction = "l" }))
@@ -316,13 +326,12 @@ hl.bind("CTRL + SUPER + SHIFT + k", hl.dsp.window.move({ workspace = "special:sp
 hl.bind("CTRL + SUPER + SHIFT + j", hl.dsp.window.move({ workspace = "e+0" }))
 
 -- Misc
+local transform_value = 0
 hl.bind("SUPER + R", function()
-	local transform_value = 0
-	if hl.get_monitor("eDP-1").transform == 0 then
-		transform_value = 3
-	elseif hl.get_monitor("eDP-1").transform == 3 then
-		transform_value = 0
-	end
+	if transform_value == 0 then transform_value = 3
+	elseif transform_value == 3 then transform_value = 2
+	elseif transform_value == 2 then transform_value = 1
+	elseif transform_value == 1 then transform_value = 0 end
 
 	hl.config({
 		input = {
@@ -388,6 +397,16 @@ hl.bind("SUPER + SHIFT + Y", hl.dsp.exec_cmd("swaync-client -C"))
 -- Rofi
 hl.bind("SUPER + D", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']]))
 hl.bind("SUPER + ALT + V", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || cliphist list | rofi -dmenu | cliphist decode | wl-copy']]))
+hl.gesture({
+	fingers = 3,
+	direction = "down",
+	action = function ()
+		hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']])
+	end
+})
 
+hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
 
--- Switches
+hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
+
+hl.bind("SUPER + W", hl.dsp.exec_cmd("/home/kax/dotfiles/modules/hypr/switch_waybar.sh"))

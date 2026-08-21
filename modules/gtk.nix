@@ -2,15 +2,21 @@
 {
 	qt = {
 		enable = true;
-		platformTheme.name = "gtk";
+
+		platformTheme.name = "gtk3";
+
+		style = {
+			name = "kvantum";
+			package = pkgs.kdePackages.qtstyleplugin-kvantum;
+		};
 	};
 
 	gtk = {
 		enable = true;
 
 		theme = {
-			name = "Adwaita";
-			package = pkgs.gnome-themes-extra;
+			name = "Dracula";
+			package = pkgs.dracula-theme;
 		};
 
 		iconTheme = {
@@ -32,17 +38,39 @@
 		gtk3.extraConfig = {
 			gtk-application-prefer-dark-theme = true;
 		};
+	};
 
-		gtk4.extraConfig = {
-			gtk-application-prefer-dark-theme = true;
+	xdg.configFile."Kvantum/kvantum.kvconfig".text = ''
+		[General]
+		theme=Dracula
+			'';
+
+	dconf.settings = {
+		"org/gnome/desktop/interface" = {
+			gtk-theme = "Dracula";
+			color-scheme = "prefer-dark";
+
+			icon-theme = "Papirus-Dark";
+			cursor-theme = "Bibata-Modern-Ice";
+			font-name = "Inter 11";
+		};
+
+		"org/gnome/desktop/wm/preferences" = {
+			theme = "Dracula";
 		};
 	};
 
-	dconf.settings."org/gnome/desktop/interface" = {
-		gtk-theme = "Adwaita";
-		icon-theme = "Papirus-Dark";
-		cursor-theme = "Bibata-Modern-Ice";
-		font-name = "Inter 11";
-		color-scheme = "prefer-dark";
+	xdg.portal = {
+		enable = true;
+		xdgOpenUsePortal = true;
+
+		extraPortals = [
+			pkgs.xdg-desktop-portal-gtk
+				pkgs.xdg-desktop-portal-hyprland
+		];
+
+		configPackages = [ pkgs.hyprland ];
 	};
+
+	fonts.fontconfig.enable = true;
 }

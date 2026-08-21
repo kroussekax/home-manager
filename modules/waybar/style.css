@@ -9,11 +9,11 @@
 }
 
 window#waybar {
-    /*color: #BBB5A9;*/
+    color: #BBB5A9;
 
 	border-radius: 10px;
 
-    /*background: rgba(40, 40, 40, 0.7);*/
+    background: rgba(40, 40, 40, 0.7);
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -24,7 +24,7 @@ window#waybar {
 }
 
 #workspaces button {
-    /*color: #BBB5A9;*/
+    color: #BBB5A9;
     transition: all 0.1s linear;
 	padding-left: 5px;
 	padding-right: 5px;

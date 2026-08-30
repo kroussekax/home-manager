@@ -1,6 +1,6 @@
 {
 	imports = [
-		./hyprland
+		./hypr
 		./swaync
 		./zen
 		./nvim

@@ -26,6 +26,4 @@
 		".config/zen/default/containers.json".source =
 			./containers.json;
 	};
-
-};
 }

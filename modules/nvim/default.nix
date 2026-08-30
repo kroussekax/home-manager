@@ -6,10 +6,10 @@
 		enable = true;
 
 		initLua = ''
-			${builtins.readFile ./nvim/set.lua}
-			${builtins.readFile ./nvim/remap.lua}
-			${builtins.readFile ./nvim/neovide.lua}
-			${builtins.readFile ./nvim/plugins.lua}
+			${builtins.readFile ./set.lua}
+			${builtins.readFile ./remap.lua}
+			${builtins.readFile ./neovide.lua}
+			${builtins.readFile ./plugins.lua}
 		'';
 
 		plugins = with pkgs.vimPlugins; [

@@ -44,6 +44,6 @@
 			};
 		};
 
-		style = builtins.readFile ./swaync/style.css;
+		style = builtins.readFile ./style.css;
 	};
 }

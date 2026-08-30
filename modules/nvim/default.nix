@@ -1,18 +1,5 @@
 {pkgs, inputs, ...}:
 {
-	/*
-	nixpkgs = {
-		overlays = [
-			(final: prev: {
-				vimPlugins = prev.vimPlugins // {
-					own-platformio-nvim = prev.vimUtils.buildVimPlugin {
-						name = "nvim-platformio";
-						src = inputs.plugin.platformio;
-					};
-				};
-			 })
-		];
-	};*/
 
 	programs.neovim = 
 	{

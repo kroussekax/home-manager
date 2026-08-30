@@ -1,16 +1,17 @@
 {
 	imports = [
+		./hyprland
+		./swaync
+		./zen
+		./nvim
+
 		./gtk.nix
-		./hyprland.nix
-		./swaync.nix
 		./fastfetch.nix
 		./obs.nix
-		./zen.nix
 		./zsh.nix
 		./spicetify.nix
 		./git.nix
 		./kitty.nix
 		./tmux.nix
-		./nvim.nix
 	];
 }

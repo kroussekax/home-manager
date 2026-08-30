@@ -1,7 +1,10 @@
-{ pkgs, config, ...}:
+{ pkgs, ... }:
+
 {
 	programs.zsh = {
 		enable = true;
+		package = pkgs.zsh;
+
 		enableCompletion = true;
 		autosuggestion.enable = true;
 		syntaxHighlighting.enable = true;
@@ -11,18 +14,14 @@
 		};
 
 		initContent = ''
-			autoload -Uz compinit
-			compinit -C
-
-			zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
 			autoload -Uz edit-command-line
 			zle -N edit-command-line
 
-			bindkey '^E' edit-command-line
+			zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 			if command -v fzf >/dev/null; then
 				source <(fzf --zsh)
-			fi'';
+					fi
+					'';
 	};
 }

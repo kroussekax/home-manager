@@ -24,6 +24,9 @@
 		XCURSOR_SIZE = "24";
 
 		NIXOS_OZONE_WL = "1";
+
+		EDITOR = "nvim";
+		VISUAL = "nvim";
 	};
 
 	home.sessionPath = [
@@ -40,11 +43,14 @@
 		localsend
 		qbittorrent
 		filezilla
+		telegram-desktop
 
 		# Games
 		steam
 		prismlauncher
 		azahar
+		ryubing
+		gamemode
 
 		# Creatives
 		gnome-tweaks

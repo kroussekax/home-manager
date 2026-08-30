@@ -29,7 +29,7 @@
 					}
 					{
 						label = "⟳";
-						command = "sh -c /home/kax/dotfiles/modules/hypr/rotate_screen.sh";
+						command = "$HOME/dotfiles/modules/swaync/auto_rotate_toggle.sh";
 					}
 					{
 						label = "⏾";

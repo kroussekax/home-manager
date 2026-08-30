@@ -126,9 +126,8 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("hyprctl setcursor Bibata-Modern-Ice 20")
 	hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
 	hl.exec_cmd("mpris-proxy")
-	hl.exec_cmd("kdeconnectd")
 	hl.exec_cmd("awww-daemon")
-	hl.exec_cmd("waybar -c /home/kax/dotfiles/modules/waybar/config.jsonc -s /home/kax/dotfiles/modules/waybar/style.css")
+	hl.exec_cmd("waybar -c ~/dotfiles/modules/waybar/config.jsonc -s ~/dotfiles/modules/waybar/style.css")
 	hl.exec_cmd("wvkbd-mobintl --hidden -H 400 -L 400 &")
 
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
@@ -138,6 +137,7 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("kitty", {workspace = 2})
 	hl.exec_cmd("vesktop &", {workspace = 4})
 	hl.exec_cmd("spotify", {workspace = 4})
+	hl.exec_cmd("Telegram", {workspace = 4})
 end)
 
 hl.gesture({
@@ -172,7 +172,7 @@ hl.window_rule({ match = {class = "gimp"}, opacity = 1})
 
 hl.window_rule({ match = {class = "vesktop"}, workspace = 4})
 hl.window_rule({ match = {class = "Spotify"}, workspace = 4,})
-hl.window_rule({ match = {class = "steam"}, workspace = 5,})
+hl.window_rule({ match = {class = "steam"}, workspace = 3,})
 
 hl.workspace_rule( {workspace = "1", monitor = "HDMI-A-1", persistent = true})
 hl.workspace_rule( {workspace = "2", monitor = "HDMI-A-1", persistent = true} )
@@ -409,4 +409,29 @@ hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
 
 hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
 
-hl.bind("SUPER + W", hl.dsp.exec_cmd("/home/kax/dotfiles/modules/hypr/switch_waybar.sh"))
+hl.bind("SUPER + W", hl.dsp.exec_cmd("~/dotfiles/modules/hypr/switch_waybar.sh"))
+
+local gamemode = false
+
+local function set_gamemode(enabled)
+    gamemode = enabled
+
+	hl.config({
+		animations = {
+			enabled = not enabled
+		},
+        decoration = {
+            blur = {
+                enabled = not enabled,
+            },
+
+            shadow = {
+                enabled = not enabled,
+            }
+		}
+	})
+end
+
+hl.bind("SUPER + Semicolon", function()
+    set_gamemode(not gamemode)
+end)

@@ -29,7 +29,7 @@
 					}
 					{
 						label = "⟳";
-						command = "$HOME/dotfiles/modules/swaync/auto_rotate_toggle.sh";
+						command = "swaync/toggle_auto_rotate.sh";
 					}
 					{
 						label = "⏾";

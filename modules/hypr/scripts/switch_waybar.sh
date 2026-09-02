@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-WAYBAR_DIR="/home/kax/dotfiles/modules/waybar"
+WAYBAR_DIR="waybar"
 ACTIVE="$WAYBAR_DIR/config.jsonc"
 
 ALL="$WAYBAR_DIR/config-all.jsonc"
@@ -17,4 +17,4 @@ fi
 
 # Reload Waybar
 pkill waybar
-waybar -c /home/kax/dotfiles/modules/waybar/config.jsonc -s /home/kax/dotfiles/modules/waybar/style.css
+waybar -c waybar/config.jsonc -s waybar/style.css

@@ -4,6 +4,8 @@
 		./swaync
 		./zen
 		./nvim
+		./waybar
+		./rofi
 
 		./gtk.nix
 		./fastfetch.nix
@@ -13,5 +15,7 @@
 		./git.nix
 		./kitty.nix
 		./tmux.nix
+
+		./app.nix
 	];
 }

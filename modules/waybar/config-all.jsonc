@@ -1,7 +1,7 @@
 [
 	{
 		"include": [
-			"$HOME/dotfiles/modules/waybar/Modules.jsonc"
+			"waybar/Modules.jsonc"
 		],
 
 		"layer": "top",

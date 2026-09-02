@@ -133,6 +133,8 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
 
+	hl.exec_cmd("hypr/auto_rotate.sh")
+
 	hl.exec_cmd("zen-beta", {workspace = 1})
 	hl.exec_cmd("kitty", {workspace = 2})
 	hl.exec_cmd("vesktop &", {workspace = 4})
@@ -409,7 +411,7 @@ hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
 
 hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
 
-hl.bind("SUPER + W", hl.dsp.exec_cmd("~/dotfiles/modules/hypr/switch_waybar.sh"))
+hl.bind("SUPER + W", hl.dsp.exec_cmd("hypr/switch_waybar.sh"))
 
 local gamemode = false
 

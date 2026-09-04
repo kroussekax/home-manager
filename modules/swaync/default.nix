@@ -29,7 +29,7 @@
 					}
 					{
 						label = "⟳";
-						command = "swaync/toggle_auto_rotate.sh";
+						command = "toggle_auto_rotate.sh";
 					}
 					{
 						label = "⏾";
@@ -43,7 +43,8 @@
 				};
 			};
 		};
-
 		style = builtins.readFile ./style.css;
 	};
+
+	home.file.".local/bin/toggle_auto_rotate.sh".source = ./scripts/toggle_auto_rotate.sh;
 }

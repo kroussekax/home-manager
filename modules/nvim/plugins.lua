@@ -164,6 +164,7 @@ require("fidget").setup({})
 vim.lsp.enable({
   'clangd',
   'lua_ls',
+  'html-language-server',
   'ts_ls',
   'rust_analyzer',
   'html',

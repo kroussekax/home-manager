@@ -127,13 +127,13 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
 	hl.exec_cmd("mpris-proxy")
 	hl.exec_cmd("awww-daemon")
-	hl.exec_cmd("waybar -c ~/dotfiles/modules/waybar/config.jsonc -s ~/dotfiles/modules/waybar/style.css")
+	hl.exec_cmd("waybar")
 	hl.exec_cmd("wvkbd-mobintl --hidden -H 400 -L 400 &")
 
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
 
-	hl.exec_cmd("hypr/auto_rotate.sh")
+	hl.exec_cmd("auto_rotate.sh")
 
 	hl.exec_cmd("zen-beta", {workspace = 1})
 	hl.exec_cmd("kitty", {workspace = 2})
@@ -406,12 +406,6 @@ hl.gesture({
 		hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']])
 	end
 })
-
-hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
-
-hl.bind("SUPER + U", hl.dsp.layout("togglesplit"))
-
-hl.bind("SUPER + W", hl.dsp.exec_cmd("hypr/switch_waybar.sh"))
 
 local gamemode = false
 

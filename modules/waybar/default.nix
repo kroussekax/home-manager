@@ -1,6 +1,6 @@
 { config, ...}:
 {
-	home.file.".local/bin/waybar" = {
+	xdg.configFile."waybar" = {
 		source = ./.;
 		recursive = true;
 	};

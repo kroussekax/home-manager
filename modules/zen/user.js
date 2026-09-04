@@ -1,0 +1,1 @@
+/nix/store/rvx7sz1n39klxfmxsaprm07jqpc3y8js-home-manager-files/.config/zen/default/user.js

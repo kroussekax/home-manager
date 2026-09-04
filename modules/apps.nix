@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, inputs, ... }:
 {
 	home.packages = with pkgs; [
 		# Communication
@@ -7,6 +7,7 @@
 		qbittorrent
 		filezilla
 		telegram-desktop
+		firefox
 
 		# Games
 		steam
@@ -14,6 +15,7 @@
 		azahar
 		ryubing
 		gamemode
+		bottles
 
 		# Creatives
 		gnome-tweaks
@@ -101,9 +103,10 @@
 		hyprpicker
 		waybar
 		hyprlock
-		inputs.awww.packages.${system}.awww
 		qt6.qtwayland
 		rofi
 		wvkbd
+		inputs.awww.packages.${system}.awww
+		quickshell
 		];
 }

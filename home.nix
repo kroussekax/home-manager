@@ -1,10 +1,6 @@
 {pkgs, inputs, ...}:
 {
-	imports = [
-		inputs.zen-browser.homeModules.beta
-
-		./modules
-	];
+	imports = [ ./modules ];
 
 	home.enableNixpkgsReleaseCheck = false;
 
@@ -30,6 +26,6 @@
 	};
 
 	home.sessionPath = [
-		"$HOME/.cargo/bin"
+		"$HOME/.local/bin"
 	];
 }

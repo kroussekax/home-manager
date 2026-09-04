@@ -16,6 +16,6 @@
 		./kitty.nix
 		./tmux.nix
 
-		./app.nix
+		./apps.nix
 	];
 }

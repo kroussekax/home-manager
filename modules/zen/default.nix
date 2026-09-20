@@ -1,4 +1,4 @@
-{ config, inputs, ...}:
+{ inputs, ...}:
 {
 
 	imports = [ inputs.zen-browser.homeModules.beta ];
@@ -9,6 +9,7 @@
 	};
 
 	home.file = {
+		".config/zen/profiles.ini".force = true;
 		".config/zen/profiles.ini".text = ''
 		[Profile0]
 		Name=default
@@ -27,7 +28,9 @@
 			./zen-keyboard-shortcuts.json;
 		".config/zen/default/zen-themes.json".source =
 			./zen-themes.json;
-		".config/zen/default/containers.json".source =
-			./containers.json;
+		".config/zen/default/containers.json" = {
+			source = ./containers.json;
+			force = true;
+		};
 	};
 }

@@ -1,48 +1,46 @@
-{ config, pkgs, inputs, ... }:
+{pkgs, inputs, ... }:
 {
 	home.packages = with pkgs; [
 		# Communication
 		vesktop
-		localsend
 		qbittorrent
 		filezilla
 		telegram-desktop
-		firefox
+		nextcloud-client
 
 		# Games
+		osu-lazer-bin
+
 		steam
+		heroic
 		prismlauncher
+
 		azahar
 		ryubing
+
 		gamemode
-		bottles
+		mangohud
+		ryzenadj
 
 		# Creatives
-		gnome-tweaks
+		obsidian
+		rnote
 		kitty
 		aseprite
 		vial
 		mpv
-		papers
 		(gimp-with-plugins.override {
 		 plugins = with gimpPlugins; [ 
 		 resynthesizer
-
 		 ];})
-		obsidian
-		nextcloud-client
 		pavucontrol
-
-		# KDE
-		kdePackages.kdeconnect-kde
 
 		# Screenshots
 		swappy
 		grim
-		slurp
 		grimblast
 
-		# Thunar
+		# File Managers
 		thunar
 		thunar-archive-plugin
 		thunar-volman
@@ -76,6 +74,13 @@
 		geoclue2
 
 		# Coding
+		nixd
+		tree-sitter
+		gcc
+		gnumake
+		pkg-config
+		vscode-langservers-extracted
+		antigravity
 		clang-tools
 		zsh
 		lua
@@ -85,7 +90,7 @@
 		jdk25
 		go
 		zig
-		(pkgs.python3.withPackages (ps: with ps; []))
+		python3
 
 		# Fonts and Icons
 		dejavu_fonts

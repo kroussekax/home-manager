@@ -25,6 +25,12 @@
 			url = "git+https://codeberg.org/LGFae/awww";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+
+		fcitx-virtualkeyboard-adapter = {
+			url = "github:horriblename/fcitx-virtualkeyboard-adapter";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 	};
 
 	outputs = { self, nixpkgs, home-manager, ... } @ inputs:

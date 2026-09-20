@@ -65,6 +65,7 @@ hl.config({
 
 	group = {
 		groupbar = {
+			enabled = false,
 			font_family = "JetBrains Mono NF",
 			font_size = 15,
 			gaps_in = 3,
@@ -109,7 +110,7 @@ hl.config({
 	misc = {
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
-	}
+	},
 })
 
 hl.device({
@@ -130,16 +131,16 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("wvkbd-mobintl --hidden -H 400 -L 400 &")
 
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'")
-	hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size 20")
-
 	hl.exec_cmd("auto_rotate.sh")
 
 	hl.exec_cmd("zen-beta", {workspace = 1})
 	hl.exec_cmd("kitty", {workspace = 2})
-	hl.exec_cmd("vesktop &", {workspace = 4})
-	hl.exec_cmd("spotify", {workspace = 4})
-	hl.exec_cmd("Telegram", {workspace = 4})
+
+	hl.exec_cmd("heroic", {workspace = 3, group = "set"})
+
+	hl.exec_cmd("Telegram", {workspace = 4, group = "set"})
+	hl.exec_cmd("vesktop", {workspace = 4, group = "set"})
+	hl.exec_cmd("spotify", {workspace = 4, group = "set"})
 end)
 
 hl.gesture({
@@ -172,9 +173,14 @@ hl.window_rule({ match = {title = "Zen Browser"}, opacity = 1})
 hl.window_rule({ match = {class = "kitty"}, opacity = 1})
 hl.window_rule({ match = {class = "gimp"}, opacity = 1})
 
-hl.window_rule({ match = {class = "vesktop"}, workspace = 4})
-hl.window_rule({ match = {class = "Spotify"}, workspace = 4,})
-hl.window_rule({ match = {class = "steam"}, workspace = 3,})
+hl.window_rule({ match = {class = "vesktop"}, workspace = 4, tile = true})
+hl.window_rule({ match = {class = "Spotify"}, workspace = 4})
+hl.window_rule({ match = {class = "org.telegram.desktop"}, workspace = 4})
+
+hl.window_rule({ match = {class = "steam"}, workspace = 3})
+hl.window_rule({ match = {class = "heroic"}, workspace = 3})
+hl.window_rule({ match = {class = "Ryujinx"}, workspace = 3})
+hl.window_rule({ match = {class = "org.azahar_emu.Azahar"}, workspace = 3})
 
 hl.workspace_rule( {workspace = "1", monitor = "HDMI-A-1", persistent = true})
 hl.workspace_rule( {workspace = "2", monitor = "HDMI-A-1", persistent = true} )
@@ -259,6 +265,17 @@ hl.bind("SUPER + Q",            hl.dsp.window.close())
 hl.bind("SUPER + SHIFT + F",    hl.dsp.window.float({ action = "toggle" }))
 hl.bind("SUPER + P",            hl.dsp.window.pseudo())
 hl.bind("SUPER + G",            hl.dsp.group.toggle())
+local isgroupbar = false
+hl.bind("SUPER + CTRL + G",     function ()
+	hl.config({
+		group = {
+			groupbar = {
+				enabled = not isgroupbar
+			}
+		}
+	})
+	isgroupbar = not isgroupbar
+end)
 hl.bind("SUPER + ALT + G",      hl.dsp.group.lock())
 hl.bind("SUPER + CTRL + TAB",   hl.dsp.group.next())
 
@@ -269,10 +286,10 @@ hl.bind("SUPER + k",            hl.dsp.focus({ direction = "u" }))
 hl.bind("SUPER + l",            hl.dsp.focus({ direction = "r" }))
 
 -- Move window or group
-hl.bind("SUPER + CTRL + h",     hl.dsp.window.move({ direction = "l" }))
-hl.bind("SUPER + CTRL + j",     hl.dsp.window.move({ direction = "d" }))
-hl.bind("SUPER + CTRL + k",     hl.dsp.window.move({ direction = "u" }))
-hl.bind("SUPER + CTRL + l",     hl.dsp.window.move({ direction = "r" }))
+hl.bind("SUPER + CTRL + h",     hl.dsp.window.move({ direction = "l", group_aware = true }))
+hl.bind("SUPER + CTRL + j",     hl.dsp.window.move({ direction = "d", group_aware = true  }))
+hl.bind("SUPER + CTRL + k",     hl.dsp.window.move({ direction = "u", group_aware = true  }))
+hl.bind("SUPER + CTRL + l",     hl.dsp.window.move({ direction = "r", group_aware = true  }))
 
 -- Cycle windows
 hl.bind("ALT + Tab",            hl.dsp.window.cycle_next(),         { repeating = true })
@@ -320,12 +337,9 @@ hl.bind("SUPER + SHIFT + 7",   hl.dsp.window.move({ workspace = 7 }))
 hl.bind("SUPER + SHIFT + 8",   hl.dsp.window.move({ workspace = 8 }))
 hl.bind("SUPER + SHIFT + 9",   hl.dsp.window.move({ workspace = 9 }))
 hl.bind("SUPER + SHIFT + 0",   hl.dsp.window.move({ workspace = 10 }))
-hl.bind("SUPER + ALT + mouse_down",  hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind("SUPER + ALT + mouse_up",    hl.dsp.window.move({ workspace = "e+1" }))
-hl.bind("CTRL + SUPER + SHIFT + right", hl.dsp.window.move({ workspace = "e+1" }), { repeating = true })
-hl.bind("CTRL + SUPER + SHIFT + left",  hl.dsp.window.move({ workspace = "e-1" }), { repeating = true })
-hl.bind("CTRL + SUPER + SHIFT + k", hl.dsp.window.move({ workspace = "special:special" }))
-hl.bind("CTRL + SUPER + SHIFT + j", hl.dsp.window.move({ workspace = "e+0" }))
+hl.bind("SUPER + ALT + left",  hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind("SUPER + ALT + right",    hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind("SUPER + M", hl.dsp.window.move({ workspace = "special:special" }))
 
 -- Misc
 local transform_value = 0
@@ -399,13 +413,6 @@ hl.bind("SUPER + SHIFT + Y", hl.dsp.exec_cmd("swaync-client -C"))
 -- Rofi
 hl.bind("SUPER + D", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']]))
 hl.bind("SUPER + ALT + V", hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || cliphist list | rofi -dmenu | cliphist decode | wl-copy']]))
-hl.gesture({
-	fingers = 3,
-	direction = "down",
-	action = function ()
-		hl.dsp.exec_cmd([[bash -c 'pgrep -x rofi >/dev/null && pkill -x rofi || rofi -show drun -show-icons']])
-	end
-})
 
 local gamemode = false
 
@@ -413,6 +420,9 @@ local function set_gamemode(enabled)
     gamemode = enabled
 
 	hl.config({
+		general = {
+			allow_tearing = true
+		},
 		animations = {
 			enabled = not enabled
 		},

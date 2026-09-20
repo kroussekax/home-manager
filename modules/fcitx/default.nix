@@ -1,3 +1,4 @@
+{ pkgs, inputs, ...}:
 {
 	xdg.configFile."fcitx5/conf" = {
 		source = ./.;

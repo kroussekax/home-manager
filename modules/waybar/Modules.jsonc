@@ -37,6 +37,14 @@
 		"format": "•",
 		"tooltip": false
 	},
+	"custom/wsnext": {
+		"format": "⏵",
+		"on-click": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"m+1\" }))'"
+	},
+	"custom/wsprev": {
+		"format": "⏴",
+		"on-click": "hyprctl eval 'hl.dispatch(hl.dsp.focus({ workspace = \"m-1\" }))'"
+	},
 	"custom/media": {
 		"exec": "playerctl metadata --format '{{title}}'",
 		"interval": 1,

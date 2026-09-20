@@ -16,7 +16,9 @@
 		"margin-right": 30,
 
 		"modules-left": [
+			"custom/wsprev",
 			"hyprland/workspaces",
+			"custom/wsnext",
 			"cava"
 		],
 

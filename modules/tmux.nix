@@ -21,13 +21,18 @@ in
 			setw -g mode-keys vi
 			set -g mouse on
 
-			bind h select-pane -L
 			bind j select-pane -D
+			bind h select-pane -L
 			bind k select-pane -U
 			bind l select-pane -R
 
 			bind-key Space command-prompt -p "Switch to session: " "switch-client -t '%%'"
 			bind-key e command-prompt -p "New session name:" "new-session -s '%%'"
+
+			bind-key j resize-pane -D 5
+			bind-key h resize-pane -L 5
+			bind-key k resize-pane -U 5
+			bind-key l resize-pane -R 5
 
 			unbind n
 			bind n next-window

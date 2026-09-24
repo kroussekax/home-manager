@@ -48,6 +48,7 @@
 		file-roller
 
 		# CLI
+		fetch
 		libinput
 		typescript
 		typescript-language-server
@@ -105,6 +106,7 @@
 		dracula-icon-theme
 
 		# Hyprland
+		hyprlock
 		hyprpicker
 		waybar
 		hyprlock
@@ -113,5 +115,5 @@
 		wvkbd
 		inputs.awww.packages.${system}.awww
 		quickshell
-		];
+	];
 }

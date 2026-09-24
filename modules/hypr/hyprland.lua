@@ -134,13 +134,15 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("auto_rotate.sh")
 
 	hl.exec_cmd("zen-beta", {workspace = 1})
+
 	hl.exec_cmd("kitty", {workspace = 2})
+	hl.exec_cmd("obsidian", {workspace = 2})
 
-	hl.exec_cmd("heroic", {workspace = 3, group = "set"})
+	hl.exec_cmd("heroic", {workspace = 3})
 
-	hl.exec_cmd("Telegram", {workspace = 4, group = "set"})
-	hl.exec_cmd("vesktop", {workspace = 4, group = "set"})
-	hl.exec_cmd("spotify", {workspace = 4, group = "set"})
+	hl.exec_cmd("Telegram", {workspace = 4})
+	hl.exec_cmd("vesktop", {workspace = 4})
+	hl.exec_cmd("spotify", {workspace = 4})
 end)
 
 hl.gesture({
@@ -167,13 +169,13 @@ hl.monitor({
 hl.window_rule({ match = {modal = true}, float = true})
 
 hl.window_rule({ match = {class = "thunar"}, opacity = 0.9})
-hl.window_rule({ match = {class = "zen-beta"}, opacity = 0.9})
+hl.window_rule({ match = {class = "zen-beta"}, opacity = 1})
 hl.window_rule({ match = {title = "(?i).*youtube.*"}, opacity = 1})
 hl.window_rule({ match = {title = "Zen Browser"}, opacity = 1})
 hl.window_rule({ match = {class = "kitty"}, opacity = 1})
 hl.window_rule({ match = {class = "gimp"}, opacity = 1})
 
-hl.window_rule({ match = {class = "vesktop"}, workspace = 4, tile = true})
+hl.window_rule({ match = {class = "vesktop"}, workspace = 4})
 hl.window_rule({ match = {class = "Spotify"}, workspace = 4})
 hl.window_rule({ match = {class = "org.telegram.desktop"}, workspace = 4})
 

@@ -110,9 +110,9 @@
 		"full-at": 100,
 		"design-capacity": false,
 		"states": {
-			"good": 95,
-			"warning": 30,
-			"critical": 15
+			"good": 80,
+			"warning": 0,
+			"critical": 0
 		},
 		"format": "{icon}{capacity}% ",
 		"format-charging": " {capacity}% ",

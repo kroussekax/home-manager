@@ -6,6 +6,7 @@
 		./nvim
 		./waybar
 		./rofi
+		./niri
 
 		./gtk.nix
 		./fastfetch.nix
@@ -15,7 +16,6 @@
 		./git.nix
 		./kitty.nix
 		./tmux.nix
-		./noctalia.nix
 
 		./apps.nix
 	];

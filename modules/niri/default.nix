@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs,... }:
 {
 	imports = [
 		inputs.noctalia.homeModules.default
@@ -6,8 +6,6 @@
 
 	programs.noctalia = {
 		enable = true;
-
-		recommendedServices.enable = true;
 
 		settings = {
 			theme = {
@@ -22,4 +20,7 @@
 			};
 		};
 	};
+
+	#niri
+	xdg.configFile."niri/config.kdl".source = ./niri.kdl;
 }

@@ -69,6 +69,21 @@ vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 
+require("codesnap").setup({
+    snapshot_config = {
+        background = "#00000000",
+        watermark = {
+            content = "",
+        },
+        window = {
+            margin = {
+                x = 0,
+                y = 0,
+            },
+        },
+    },
+})
+
 require("transparent").setup({
 	-- table: default groups
 	groups = {

@@ -18,11 +18,13 @@
 		azahar
 		ryubing
 
+		protonup-qt
 		gamemode
 		mangohud
 		ryzenadj
 
 		# Creatives
+		proton-vpn
 		obsidian
 		rnote
 		kitty
@@ -48,9 +50,12 @@
 		file-roller
 
 		# CLI
+		postgresql
+		wayvnc
+		ntfs3g
+		exfat
 		fetch
 		libinput
-		typescript
 		typescript-language-server
 		android-tools
 		davfs2
@@ -103,10 +108,10 @@
 		inter
 		dracula-theme
 		kdePackages.qtstyleplugin-kvantum
+		kdePackages.dolphin
 		dracula-icon-theme
 
 		# Hyprland
-		hyprlock
 		hyprpicker
 		waybar
 		hyprlock

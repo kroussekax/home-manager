@@ -7,7 +7,6 @@
 		./waybar
 		./rofi
 
-		./hyprlock.nix
 		./gtk.nix
 		./fastfetch.nix
 		./obs.nix
@@ -16,7 +15,7 @@
 		./git.nix
 		./kitty.nix
 		./tmux.nix
-		./sonara.nix
+		./noctalia.nix
 
 		./apps.nix
 	];

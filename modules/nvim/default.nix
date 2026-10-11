@@ -18,6 +18,7 @@
 			cloak-nvim
 			vim-fugitive
 			harpoon
+			codesnap-nvim
 
 			# lsp dependencies
 			nvim-lspconfig

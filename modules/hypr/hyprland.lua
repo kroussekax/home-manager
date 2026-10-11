@@ -129,7 +129,6 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("mpris-proxy")
 	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("waybar")
-	hl.exec_cmd("wvkbd-mobintl --hidden -H 400 -L 400 &")
 
 	hl.exec_cmd("auto_rotate.sh")
 
@@ -166,6 +165,7 @@ hl.monitor({
 	transform = 0
 })
 
+hl.window_rule({ match = {class = ".*"}, suppress_event = "maximize"})
 hl.window_rule({ match = {modal = true}, float = true})
 
 hl.window_rule({ match = {class = "thunar"}, opacity = 0.9})
@@ -443,3 +443,17 @@ end
 hl.bind("SUPER + Semicolon", function()
     set_gamemode(not gamemode)
 end)
+
+
+local function toggle_tablet_mode(totablet)
+	hl.exec_cmd('notify-desktop "Toggled Tablet Mode"')
+
+	if totablet then
+		hl.exec_cmd('wvkbd-mobintl --hidden -H 400 -L 400 --auto &')
+	else
+		hl.exec_cmd('pkill wvkbd')
+	end
+end
+
+hl.bind("switch:on:ThinkPad Extra Buttons", function () toggle_tablet_mode(true) end, { locked = true })
+hl.bind("switch:off:ThinkPad Extra Buttons", function () toggle_tablet_mode(false) end, { locked = true })

@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-
-let
-in
+{ pkgs, ... }:
 {
 	programs.tmux = {
 		enable = true;

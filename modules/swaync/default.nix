@@ -33,7 +33,7 @@
 					}
 					{
 						label = "⏾";
-						command = "systemctl hybrid-sleep";
+						command = "systemctl suspend-then-hibernate";
 					}
 					{
 						label = "⌨";

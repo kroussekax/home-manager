@@ -18,7 +18,20 @@
 			};
 		};
 
+		helium = {
+			url = "github:schembriaiden/helium-browser-nix-flake";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
+
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+		sonora.url = "github:sonorahq/sonora";
+
+		# niri - noctalia
+		noctalia = {
+			url = "github:noctalia-dev/noctalia";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
 		#hyprland stuff
 		awww = {

@@ -1,4 +1,17 @@
 environment {
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+
+    SDL_VIDEODRIVER "wayland,x11"
+    CLUTTER_BACKEND "wayland"
+
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    XDG_SESSION_DESKTOP "niri"
+
     SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/keyring/ssh"
 }
 
@@ -8,14 +21,14 @@ cursor {
 }
 
 layer-rule {
-    match namespace="^noctalia-overview.*"
+    match namespace="^noctalia-backdrop"
     place-within-backdrop true
 }
 
 prefer-no-csd
 
 output "HDMI-A-1" {
-    mode "1920x1080@120"
+    mode "1920x1080@180.000"
     scale 1
     position x=0 y=0
 	focus-at-startup
@@ -77,6 +90,7 @@ input {
     }
     touchpad {
         natural-scroll
+		tap
     }
 }
 
@@ -101,6 +115,9 @@ layout {
     }
 }
 
+spawn-at-startup "gnome-keyring-daemon --start --components=secrets"
+spawn-at-startup "/run/current-system/sw/lib/polkit-1/polkit-agent-helper-1"
+spawn-at-startup "iio-niri" "listen" "--monitor" "eDP-1"
 spawn-at-startup "noctalia"
 spawn-at-startup "mpris-proxy"
 
@@ -108,6 +125,7 @@ spawn-at-startup "zen-beta"
 spawn-at-startup "kitty"
 spawn-at-startup "obsidian"
 spawn-at-startup "heroic"
+spawn-at-startup "gamemoderun prismlauncher"
 spawn-at-startup "Telegram"
 spawn-at-startup "vesktop"
 spawn-at-startup "spotify"
@@ -118,7 +136,7 @@ window-rule {
     clip-to-geometry true
 	background-effect {
 		blur true
-		noise 0.3
+		noise 0.2
 	}
 	
 	popups {
@@ -129,6 +147,12 @@ window-rule {
 window-rule {
 	match app-id="kitty" at-startup=true
 	open-on-workspace "2" 
+	open-maximized true
+}
+
+window-rule {
+	match app-id="org.prismlauncher.PrismLauncher"
+	open-on-workspace "3" 
 	open-maximized true
 }
 
@@ -188,6 +212,7 @@ binds {
 	Mod+C { spawn-sh "noctalia msg panel-toggle control-center calendar"; }
 	Mod+Y { spawn-sh "noctalia msg panel-toggle control-center "; }
 	Mod+Shift+Y { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
+	Mod+P { spawn-sh "noctalia msg panel-toggle session"; }
 	Mod+Alt+V { spawn-sh "noctalia msg panel-toggle clipboard"; }
 	Mod+Shift+S { spawn-sh "noctalia msg screenshot-region"; }
 
@@ -198,19 +223,17 @@ binds {
     Mod+Q { close-window; }
     Mod+Shift+F { toggle-window-floating; }
     Mod+O { toggle-overview; }
+    Mod+X { toggle-overview; }
 
     Mod+H { focus-column-or-monitor-left; }
-    Mod+J { focus-window-down; }
-    Mod+K { focus-window-up; }
+    Mod+J { focus-window-or-workspace-down; }
+    Mod+K { focus-window-or-workspace-up; }
     Mod+L { focus-column-or-monitor-right; }
 
     Mod+Ctrl+H { move-column-left; }
     Mod+Ctrl+J { move-window-down; }
     Mod+Ctrl+K { move-window-up; }
     Mod+Ctrl+L { move-column-right; }
-
-	Mod+I { focus-window-or-workspace-up; }
-    Mod+U { focus-window-or-workspace-down; }
 
     Mod+Shift+H { set-column-width "-40"; }
     Mod+Shift+L { set-column-width "+40"; }

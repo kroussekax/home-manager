@@ -16,6 +16,8 @@
 
 			background_opacity = "0.5";
 
+			enable_audio_bell = "no";
+
 			force_ltr = "yes";
 
 			cursor_blink_interval = "0.6";

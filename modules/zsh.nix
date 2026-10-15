@@ -17,7 +17,7 @@
 			autoload -Uz edit-command-line
 			zle -N edit-command-line
 
-			zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+			zstyle ':completion:*' matcher-list \'\' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 			if command -v fzf >/dev/null; then
 				source <(fzf --zsh)

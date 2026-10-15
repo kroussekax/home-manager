@@ -1,14 +1,14 @@
 {
 	imports = [
-		./hypr
-		./swaync
+		./niri
 		./zen
 		./nvim
-		./waybar
-		./rofi
-		./niri
+		#./hypr
+		#./swaync
+		#./waybar
+		#./rofi
 
-		./gtk.nix
+		#./gtk.nix
 		./fastfetch.nix
 		./obs.nix
 		./zsh.nix

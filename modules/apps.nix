@@ -1,4 +1,4 @@
-{pkgs, inputs, ... }:
+{pkgs, ... }:
 {
 	home.packages = with pkgs; [
 		# Communication
@@ -24,9 +24,9 @@
 		ryzenadj
 
 		# Creatives
+		wvkbd
 		proton-vpn
 		obsidian
-		rnote
 		kitty
 		aseprite
 		vial
@@ -37,19 +37,12 @@
 		 ];})
 		pavucontrol
 
-		# Screenshots
-		swappy
-		grim
-		grimblast
-
 		# File Managers
 		thunar
-		thunar-archive-plugin
-		thunar-volman
 		unrar
-		file-roller
 
 		# CLI
+		imagemagick
 		postgresql
 		wayvnc
 		ntfs3g
@@ -111,14 +104,6 @@
 		kdePackages.dolphin
 		dracula-icon-theme
 
-		# Hyprland
-		hyprpicker
-		waybar
-		hyprlock
-		qt6.qtwayland
-		rofi
-		wvkbd
-		inputs.awww.packages.${system}.awww
-		quickshell
+		iio-niri
 	];
 }

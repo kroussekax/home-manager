@@ -127,11 +127,28 @@ width = 700
 [desktop_widgets]
 enabled = true
 schema_version = 2
+widget_order = [ "desktop-widget-0000000000000002" ]
 
     [desktop_widgets.grid]
-    cell_size = 16
+    cell_size = 8
     major_interval = 4
     visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 800.0
+    cy = 500.0
+    enabled = true
+    output = "eDP-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = false
+        visualization_mode = "bars"
 
 [dock]
 active_monitor_only = false
@@ -261,24 +278,24 @@ sunrise = ""
 sunset = ""
 
 [lockscreen]
-enabled               = true
-lock_before_suspend   = true
-grace_period_seconds  = 0   
-fingerprint           = true
-allow_empty_password  = false 
-blurred_desktop       = true 
-transition            = ["zoom"]
-transition_duration   = 1500
-edge_smoothness       = 0.3
-blur_intensity        = 0.5
-tint_intensity        = 0.3
+allow_empty_password = false
+blur_intensity = 0.5
+blurred_desktop = true
+edge_smoothness = 0.30000001192092896
+enabled = true
+fingerprint = true
+grace_period_seconds = 0
+lock_before_suspend = true
+monitors = []
+tint_intensity = 0.30000001192092896
+transition = [ "zoom" ]
+transition_duration = 1500.0
 wallpaper = ""
 
-
 [lockscreen_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -287,7 +304,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 196.0
-    box_width = 810.0
+    box_width = 720.0
     cx = 960.0
     cy = 898.0
     enabled = true
@@ -317,7 +334,7 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
     box_height = 196.0
     box_width = 810.0
     cx = 800.0
-    cy = 810.41644287109375
+    cy = 806.0
     enabled = true
     output = "eDP-1"
     placement_height = 1000.0
@@ -340,6 +357,24 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@eDP-1" ]
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 400.0
+    cx = 800.0
+    cy = 404.0
+    enabled = true
+    output = "eDP-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background_opacity = 0.0
+        background_padding = 10
+        background_radius = 21
+        clock_style = "digital"
 
 [nightlight]
 enabled = false
@@ -405,7 +440,7 @@ scale = 1.0
 
 [plugins]
 auto_update = "all"
-enabled = [ "h-jangra/keyviz" ]
+enabled = []
 
     [[plugins.source]]
     enabled = true
@@ -531,7 +566,7 @@ umbriel_overview_type_to_launch_enabled = false
     close_on_save = true
     confirm_region = false
     copy_to_clipboard = true
-    directory = ""
+    directory = "/home/kax/nextcloud/Pics/Screenshots"
     filename_pattern = ""
     freeze_screen = true
     pipe_command = ""
@@ -664,12 +699,12 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "cava", "gtk3", "gtk4", "niri", "qt" ]
-    community_ids = []
+    community_ids = [ "heroiclauncher", "tmux" ]
     enable_builtin_templates = true
     enable_community_templates = true
 
 [wallpaper]
-directory = ""
+directory = "/home/kax/nextcloud/Wallpapers"
 directory_dark = ""
 directory_light = ""
 edge_smoothness = 0.30000001192092896

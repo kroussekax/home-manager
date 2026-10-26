@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{pkgs, inputs, ... }:
 {
 	home.packages = with pkgs; [
 		# Communication
@@ -15,8 +15,10 @@
 		heroic
 		prismlauncher
 
-		azahar
-		ryubing
+		# Emulators
+		azahar # 3ds
+		ryubing # switch
+		dolphin-emu # wii
 
 		protonup-qt
 		gamemode
@@ -79,7 +81,6 @@
 		gnumake
 		pkg-config
 		vscode-langservers-extracted
-		antigravity
 		clang-tools
 		zsh
 		lua
@@ -105,5 +106,9 @@
 		dracula-icon-theme
 
 		iio-niri
+
+		inputs.tail-up.packages.${pkgs.stdenv.hostPlatform.system}.default
+		xwayland-satellite
+		wine
 	];
 }

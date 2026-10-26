@@ -13,6 +13,9 @@ environment {
     XDG_SESSION_DESKTOP "niri"
 
     SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/keyring/ssh"
+
+	XCURSOR_THEME "Bibata-Modern-Ice"
+	XCURSOR_SIZE "24"
 }
 
 cursor {
@@ -145,7 +148,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="kitty" at-startup=true
+	match app-id="kitty"  at-startup=true
 	open-on-workspace "2" 
 	open-maximized true
 }
@@ -172,8 +175,8 @@ window-rule {
 	open-maximized true
 }
 window-rule {
-	match app-id="steam" 
-	open-on-workspace "3" 
+	match app-id="steam"   at-startup=true
+	open-on-workspace "3"  
 	open-maximized true
 }
 window-rule {

@@ -3,13 +3,9 @@
 		./niri
 		./zen
 		./nvim
-		#./hypr
-		#./swaync
-		#./waybar
-		#./rofi
 
-		#./gtk.nix
 		./fastfetch.nix
+		./retroarch.nix
 		./obs.nix
 		./zsh.nix
 		./spicetify.nix

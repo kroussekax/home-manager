@@ -5,7 +5,6 @@
 		./nvim
 
 		./fastfetch.nix
-		./retroarch.nix
 		./obs.nix
 		./zsh.nix
 		./spicetify.nix

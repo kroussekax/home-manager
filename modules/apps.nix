@@ -18,6 +18,7 @@
 		# Emulators
 		azahar # 3ds
 		ryubing # switch
+		eden
 		dolphin-emu # wii
 
 		protonup-qt

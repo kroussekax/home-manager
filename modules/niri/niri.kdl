@@ -83,7 +83,7 @@ workspace "10" {
 }
 
 input {
-	focus-follows-mouse
+	focus-follows-mouse max-scroll-amount="0%"
     keyboard {
         xkb {
 			layout "us" 

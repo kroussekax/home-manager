@@ -18,29 +18,12 @@
 			};
 		};
 
-		helium = {
-			url = "github:schembriaiden/helium-browser-nix-flake";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
 		spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
-		sonora.url = "github:sonorahq/sonora";
+		tail-up.url = "github:mateoalfaro/tail-up";
 
 		# niri - noctalia
 		noctalia = {
 			url = "github:noctalia-dev/noctalia";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		#hyprland stuff
-		awww = {
-			url = "git+https://codeberg.org/LGFae/awww";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-
-		fcitx-virtualkeyboard-adapter = {
-			url = "github:horriblename/fcitx-virtualkeyboard-adapter";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 

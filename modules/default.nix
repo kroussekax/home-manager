@@ -5,13 +5,13 @@
 		./nvim
 
 		./fastfetch.nix
-		./nirinit.nix
 		./obs.nix
 		./zsh.nix
 		./spicetify.nix
 		./git.nix
 		./kitty.nix
 		./tmux.nix
+		./gamemode.nix
 
 		./apps.nix
 	];

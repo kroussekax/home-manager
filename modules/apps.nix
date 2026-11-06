@@ -22,7 +22,6 @@
 		dolphin-emu # wii
 
 		protonup-qt
-		gamemode
 		mangohud
 		ryzenadj
 

@@ -7,6 +7,7 @@
 		filezilla
 		telegram-desktop
 		nextcloud-client
+		zoom-us
 
 		# Games
 		osu-lazer-bin
@@ -22,6 +23,7 @@
 		dolphin-emu # wii
 
 		protonup-qt
+		gamemode
 		mangohud
 		ryzenadj
 

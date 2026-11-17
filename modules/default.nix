@@ -11,7 +11,7 @@
 		./git.nix
 		./kitty.nix
 		./tmux.nix
-		./gamemode.nix
+		#./gamemode.nix
 
 		./apps.nix
 	];

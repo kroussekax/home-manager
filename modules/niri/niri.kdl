@@ -218,10 +218,6 @@ binds {
 	Mod+Alt+V { spawn-sh "noctalia msg panel-toggle clipboard"; }
 	Mod+Shift+S { spawn-sh "noctalia msg screenshot-region"; }
 
-	Mod+T { focus-window {app-id="kitty";} }
-	Mod+R { focus-window {app-id="md.Obsidian";} }
-	Mod+E { focus-window {app-id="spotify";} }
-
     Mod+F { fullscreen-window; }
 	Mod+Ctrl+F { maximize-column; }
     Mod+Q { close-window; }
